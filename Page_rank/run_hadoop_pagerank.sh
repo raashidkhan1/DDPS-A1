@@ -1,7 +1,7 @@
 #!/bin/bash
-cd ~/var/scratch/hadoop
+cd /var/scratch/hadoop
 
-bin/hdfs dfs -mkdir /input; bin/hdfs dfs -put ~/DDS/DDPS-A1/PageRank/soc-Slashdot0902.txt  /input
+bin/hdfs dfs -mkdir /input; bin/hdfs dfs -put /var/scratch/DDS/DDPS-A1/PageRank/soc-Slashdot0902.txt  /input
 
 cd etc/hadoop
 
@@ -27,13 +27,13 @@ echo '<property>
 </configuration>' >> mapred-site.xml
 
 
-chmod 777 ~/DDS/DDPS-A1/PageRank/mapper.py ~/DDS/DDPS-A1/PageRank/reducer.py
+chmod 777 /var/scratch/DDS/DDPS-A1/PageRank/mapper.py /var/scratch/DDS/DDPS-A1/PageRank/reducer.py
 
 cd ../..
 
-hadoop_performance=$(bin/mapred streaming -input /input/soc-Slashdot0902.txt  -output /ouputPR -mapper ~/DDS/DDPS-A1/PageRank/mapper.py -reducer ~/DDS/DDPS-A1/PageRank/reducer.py)
+hadoop_performance=$(bin/mapred streaming -input /input/soc-Slashdot0902.txt  -output /ouputPR -mapper /var/scratch/DDS/DDPS-A1/PageRank/mapper.py -reducer /var/scratch/DDS/DDPS-A1/PageRank/reducer.py)
 start = $SECONDS
-echo $hadoop_performance >> ~/DDS/PageRank/performance_log.txt
+echo $hadoop_performance >> /var/scratch/DDS/PageRank/performance_log.txt
 duration = $((SECONDS - start))
 echo duration
 Footer
