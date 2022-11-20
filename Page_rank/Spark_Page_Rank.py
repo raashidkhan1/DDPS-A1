@@ -32,7 +32,7 @@ from pyspark.resultiterable import ResultIterable
 from pyspark.sql import SparkSession
 
 
-def computeContribs(urls: ResultIterable[str], rank: float) -> Iterable[Tuple[str, float]]:
+def computeContribs(urls, rank):
     """Calculates URL contributions to the rank of other URLs."""
     num_urls = len(urls)
     for url in urls:
@@ -41,7 +41,7 @@ def computeContribs(urls: ResultIterable[str], rank: float) -> Iterable[Tuple[st
 
 def parseNeighbors(urls: str) -> Tuple[str, str]:
     """Parses a urls pair string into urls pair."""
-    parts = re.split(r'\s+', urls)
+    parts = re.split(r" ", urls)
     return parts[0], parts[1]
 
 
@@ -54,6 +54,7 @@ if __name__ == "__main__":
           "Please refer to PageRank implementation provided by graphx",
           file=sys.stderr)
 
+    start = time.time()
     # Initialize the spark context.
     spark = SparkSession\
         .builder\
@@ -88,3 +89,5 @@ if __name__ == "__main__":
         print("%s has rank: %s." % (link, rank))
 
     spark.stop()
+    end = time.time()
+    print("Elapsed time: ", end-start)
