@@ -29,13 +29,13 @@ echo '<property>
 </configuration>' >> mapred-site.xml
 
 
-chmod 777 ~/DDPS-A1/Page_Rank/mapper.py ~/DDPS-A1/Page_Rank/reducer.py
+chmod 777 ~/DDPS-A1/Page_Rank_All/mapper.py ~/DDPS-A1/Page_Rank_All/reducer.py
 
 cd ../..
 
-hadoop_performance=$(bin/mapred streaming -input /input/soc-Slashdot0902.txt  -output /ouputPR -mapper ~/DDPS-A1/Page_Rank/mapper.py -reducer ~/DDPS-A1/Page_Rank/reducer.py)
+hadoop_performance=$(bin/mapred streaming -input /input/soc-Slashdot0902.txt  -output /ouputPR -mapper ~/DDPS-A1/Page_Rank_All/mapper.py -reducer ~/DDPS-A1/Page_Rank_All/reducer.py)
 start = $SECONDS
-echo $hadoop_performance >> ~/DDPS-A1/Page_Rank/performance_log.txt
+echo $hadoop_performance >> ~/DDPS-A1/Page_Rank_All/performance_log.txt
 duration = $((SECONDS - start))
 echo duration
 Footer
