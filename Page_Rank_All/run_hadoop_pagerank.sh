@@ -34,7 +34,7 @@ chmod 777 ~/DDPS-A1/Page_Rank_All/mapper.py ~/DDPS-A1/Page_Rank_All/reducer.py
 cd ../..
 
 start=`date +%s`
-hadoop_performance=$(bin/mapred streaming -input /input/out.dbpedia-link  -output /ouputPR -mapper ~/DDPS-A1/Page_Rank_All/mapper.py -reducer ~/DDPS-A1/Page_Rank_All/reducer.py)
+hadoop_performance=$(bin/mapred streaming -input /input/out.dbpedia-link  -output /outputPR -mapper ~/DDPS-A1/Page_Rank_All/mapper.py -reducer ~/DDPS-A1/Page_Rank_All/reducer.py)
 echo $hadoop_performance >> ~/DDPS-A1/Page_Rank_All/performance_log.txt
 end=`date +%s`
 echo "Runtime was $((end-start))"
