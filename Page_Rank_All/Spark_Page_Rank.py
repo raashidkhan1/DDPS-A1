@@ -74,9 +74,9 @@ if __name__ == "__main__":
     # Loads all URLs with other URL(s) link to from input file and initialize ranks of them to one.
     ranks = links.map(lambda url_neighbors: (url_neighbors[0], 1.0))
 
+    start = time.time()
     # Calculates and updates URL ranks continuously using PageRank algorithm.
     for iteration in range(10):
-        start = time.time()
         # Calculates URL contributions to the rank of other URLs.
         contribs = links.join(ranks).flatMap(lambda url_urls_rank: computeContribs(
             url_urls_rank[1][0], url_urls_rank[1][1]  # type: ignore[arg-type]
@@ -84,12 +84,12 @@ if __name__ == "__main__":
 
         # Re-calculates URL ranks based on neighbor contributions.
         ranks = contribs.reduceByKey(add).mapValues(lambda rank: rank * 0.85 + 0.15)
-        end = time.time()
-        print("Elapsed time for iteration {0} : {1}".format(iteration, end-start))
+
     # Collects all URL ranks and dump them to console.
-    (link, rank) = ranks.collect()
+    collected = ranks.collect()
     # for (link, rank) in ranks.collect():
     #     print("%s has rank: %s." % (link, rank))
-
+    end = time.time()
+    print("Elapsed time ", end-start)
     spark.stop()
     
