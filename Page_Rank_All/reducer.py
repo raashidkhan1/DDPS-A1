@@ -58,4 +58,3 @@ if current_key == key:
     print('%s\t%s\t%s' % (current_key, new_pr, out_links))
 
 sys.exit(0)
-Footer
