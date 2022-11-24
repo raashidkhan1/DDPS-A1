@@ -6,7 +6,7 @@ Experimentation on Spark and Hadoop for iterative machine learning applications 
 1. Clone the repo in the DAS5 home/$user directory
 2. Install a virtual python environment and provide the path to ~/.bashrc using the template from the repo.
 3. Sets path for Spark, Hadoop, JVM and Yarn as per their location referencing from the template.
-4. Allocate nodes with scripts under [](https://github.com/raashidkhan1/DDPS-A1/tree/main/das5) or modify for number of nodes and time
+4. Allocate nodes with scripts under [das5/](https://github.com/raashidkhan1/DDPS-A1/tree/main/das5) or modify for number of nodes and time
 5. Check if nodes are allocated with below command- 
 ```
 preserve -llist
