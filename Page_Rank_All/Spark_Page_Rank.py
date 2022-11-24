@@ -66,7 +66,7 @@ if __name__ == "__main__":
     #     URL         neighbor URL
     #     URL         neighbor URL
     #     ...
-    lines = spark.read.text("hdfs://node105:9000/out.dbpedia-link").rdd.map(lambda r: r[0])
+    lines = spark.read.text("hdfs://node105:9000/wiki-Talk.txt").rdd.map(lambda r: r[0])
 
     # Loads all URLs from input file and initialize their neighbors.
     links = lines.map(lambda urls: parseNeighbors(urls)).distinct().groupByKey().cache()
