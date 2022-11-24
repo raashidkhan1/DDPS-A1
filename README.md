@@ -1,21 +1,21 @@
 # Distributed Data Processing Systems-Assignment1
 A reproducibility study on Resilient distributed datasets: A fault-tolerant abstraction for in-memory cluster computing.
-Experimentation on Spark and Hadoop for iterative machine learning applications and PageRank algorithm.
+Experimentation on Spark and Hadoop for PageRank algorithm.
  
 ## Steps for running:
-1. Clone the repo in the DAS5 home/ddps2204/ directory
+1. Clone the repo in the DAS5 home/ddps2204/ directory.
 2. Install a virtual python environment and provide the path to <~/.bashrc> using the template from the repo.
 3. Install Spark, hadoop, JVM and update their configuration files.
 4. Set path for Spark, Hadoop, JVM and Yarn as per their location referencing from the bashrc template and use command-
 ```
 source ~/.bashrc
 ```
-4. Allocate nodes with scripts under [das5/](https://github.com/raashidkhan1/DDPS-A1/tree/main/das5) or modify for number of nodes and time
+4. Allocate nodes with scripts under [das5/](https://github.com/raashidkhan1/DDPS-A1/tree/main/das5) or modify for number of nodes and time.
 5. Check if nodes are allocated with below command- 
 ```
 preserve -llist
 ```
-6. Update worker nodes in /hadoop/etc/hadoop/workers
+6. Update worker nodes in /hadoop/etc/hadoop/workers.
 7. Start hadoop daemon process with-
 ```
 start-all.sh
@@ -50,7 +50,7 @@ Run
 ./run_hadoop_pagerank.sh
 ```
 
-12. The second experiment with insufficient memory can be ran with a alternate file for Spark_Page_Rank.py and changing line number 72 with-
+12. The second experiment with insufficient memory can be ran with an alternate file for Spark_Page_Rank.py and changing line number 72 with-
 ```
 links = lines.map(lambda urls: parseNeighbors(urls)).distinct().groupByKey().persist(StorageLevel.MEMORY_AND_DISK)
 ```
